@@ -1,0 +1,21 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EightBot.Droid.FloatLabeledEditText/FloatLabeledEditText.cs">
+    <Files>
+      <File FileName="EightBot.Droid.FloatLabeledEditText/FloatLabeledEditText.cs" Line="48" Column="48" />
+      <File FileName="EightBot.Droid.FloatLabeledEditText.Sample/MainActivity.cs" Line="3" Column="3" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/mstonis/Development/EightBot.Droid.FloatLabeledEditText/EightBot.Droid.FloatLabeledEditText.Sample/MainActivity.cs" line="4" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../PDRMobile/PDRMobile.iOS/ViewControllers/Login.cs" line="179" offsetX="853" offsetY="2670" expression="AppDelegate.Current.Window" liveUpdate="False" />
+    <Watch file="../PDRMobile/PDRMobile.MobileCore/ViewModels/Contacts/Contact.cs" line="140" offsetX="457" offsetY="2085" expression="validationResults" liveUpdate="False" />
+    <Watch file="../PDRMobile/PDRMobile.MobileCore/ViewModels/Estimates/EstimateList.cs" line="62" offsetX="436" offsetY="915" expression="OpenEstimates" liveUpdate="False" />
+    <Watch file="../PDRMobile/PDRMobile.Droid/Fragments/Estimate/EditEstimateContact.cs" line="155" offsetX="746" offsetY="2310" expression="ViewModel.UserClassificationsForDisplay" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MonoDevelop.Ide.ItemProperties.EightBot.Droid.FloatLabeledEditText.Sample MonoForAntroid.PreferredDevice="Nexus 4" />
+</Properties>
