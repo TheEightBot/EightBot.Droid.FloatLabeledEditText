@@ -3,4 +3,4 @@ EightBot.Droid.FloatLabeledEditText
 
 Floating Edit Text for Xamarin Android
 
-This is a port of the [FloatingHintEditText](https://github.com/thebnich/FloatingHintEditText) Android library by @thebnich
+This is a port of the [FloatingHintEditText](https://github.com/thebnich/FloatingHintEditText) Android library by [@thebnich](https://github.com/thebnich)

@@ -19,27 +19,19 @@ namespace EightBot.Droid.FloatLabeledEditText
 		readonly Paint _floatingHintPaint = new Paint();
 		ColorStateList _hintColors;
 		bool _wasEmpty;
-		int _animationFrame;
-		AnimationState mAnimation = AnimationState.None;
+		int _currentAnimationFrame;
+		AnimationState _currentAnimationState = AnimationState.None;
 
 		float _hintScale = DefaultHintScale;
 		public float HintScale {
-			get {
-				return _hintScale;
-			}
-			set {
-				_hintScale = value;
-			}
+			get { return _hintScale; }
+			set { _hintScale = value; }
 		}
 
 		int _animationSteps = DefaultAnimationSteps;
 		public int AnimationSteps {
-			get {
-				return _animationSteps;
-			}
-			set {
-				_animationSteps = value;
-			}
+			get { return _animationSteps; }
+			set { _animationSteps = value; }
 		}
 
 		public FloatLabeledEditText (Context context) : base(context)
@@ -92,13 +84,12 @@ namespace EightBot.Droid.FloatLabeledEditText
 				return;
 
 			if (isEmpty) {
-				mAnimation = AnimationState.Grow;
+				_currentAnimationState = AnimationState.Grow;
 				SetHintTextColor (Color.Transparent);
 			} else
-				mAnimation = AnimationState.Shrink;
+				_currentAnimationState = AnimationState.Shrink;
 		}
-			
-	
+
 		protected override void OnDraw (Canvas canvas)
 		{
 			base.OnDraw (canvas);
@@ -106,7 +97,7 @@ namespace EightBot.Droid.FloatLabeledEditText
 			if(string.IsNullOrEmpty(this.Hint))
 				return;
 
-			var isAnimating = mAnimation != AnimationState.None;
+			var isAnimating = _currentAnimationState != AnimationState.None;
 
 			if (!isAnimating && string.IsNullOrEmpty (this.Text))
 				return;
@@ -122,7 +113,6 @@ namespace EightBot.Droid.FloatLabeledEditText
 			var floatingHintPosY = normalHintPosY + this.Paint.GetFontMetricsInt ().Top + this.ScrollY;
 			floatingHintPosY = floatingHintPosY + (int)((floatingHintSize - floatingHintPosY) / 2f);
 
-
 			// If we're not animating, we're showing the floating hint, so draw it and bail.
 			if (!isAnimating) {
 				_floatingHintPaint.TextSize = floatingHintSize;
@@ -130,33 +120,33 @@ namespace EightBot.Droid.FloatLabeledEditText
 				return;
 			}
 
-			if (mAnimation == AnimationState.Shrink)
+			if (_currentAnimationState == AnimationState.Shrink)
 				DrawAnimationFrame(canvas, normalHintSize, floatingHintSize, hintPosX, normalHintPosY, floatingHintPosY);
 			else
 				DrawAnimationFrame(canvas, floatingHintSize, normalHintSize, hintPosX, floatingHintPosY, normalHintPosY);
 
-			_animationFrame++;
+			_currentAnimationFrame++;
 
-			if (_animationFrame == AnimationSteps) {
-				if (mAnimation == AnimationState.Grow)
+			if (_currentAnimationFrame == AnimationSteps) {
+				if (_currentAnimationState == AnimationState.Grow)
 					SetHintTextColor (_hintColors);
 
-				mAnimation = AnimationState.None;
-				_animationFrame = 0;
+				_currentAnimationState = AnimationState.None;
+				_currentAnimationFrame = 0;
 			}
 
 			Invalidate();
 		}
 
-		private void DrawAnimationFrame(Canvas canvas, float fromSize, float toSize, float hintPosX, float fromY, float toY) {
+		void DrawAnimationFrame(Canvas canvas, float fromSize, float toSize, float hintPosX, float fromY, float toY) {
 			float textSize = Lerp(fromSize, toSize);
 			float hintPosY = Lerp(fromY, toY);
 			_floatingHintPaint.TextSize = textSize;
 			canvas.DrawText(Hint, hintPosX, hintPosY, _floatingHintPaint);
 		}
 
-		private float Lerp(float from, float to) {
-			float alpha = (float) _animationFrame / (AnimationSteps - 1);
+		float Lerp(float from, float to) {
+			float alpha = (float) _currentAnimationFrame / (AnimationSteps - 1);
 			return from * (1 - alpha) + to * alpha;
 		}
 
