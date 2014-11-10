@@ -9,10 +9,10 @@ using Android.Text;
 
 namespace EightBot.Droid.FloatLabeledEditText
 {
-	public enum AnimationState { None, Shrink, Grow }
-
 	public class FloatLabeledEditText : EditText
 	{
+		enum AnimationState { None, Shrink, Grow }
+
 		public const float DefaultHintScale = 0.6f;
 		public const int DefaultAnimationSteps = 6;
 
