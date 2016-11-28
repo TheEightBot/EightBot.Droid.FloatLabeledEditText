@@ -9,7 +9,7 @@ using Android.Text;
 
 namespace EightBot.Droid.FloatLabeledEditText
 {
-	public class FloatLabeledEditText : EditText
+	public class FloatLabeledEditTextPlain : EditText
 	{
 		enum AnimationState { None, Shrink, Grow }
 
@@ -34,22 +34,22 @@ namespace EightBot.Droid.FloatLabeledEditText
 			set { _animationSteps = value; }
 		}
 
-		public FloatLabeledEditText (Context context) : base(context)
+		public FloatLabeledEditTextPlain (Context context) : base(context)
 		{
 			Initialize ();
 		}
 
-		public FloatLabeledEditText (IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
+		public FloatLabeledEditTextPlain (IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
 		{
 			Initialize ();
 		}
 
-		public FloatLabeledEditText (Context context, IAttributeSet attrs) : base(context, attrs)
+		public FloatLabeledEditTextPlain (Context context, IAttributeSet attrs) : base(context, attrs)
 		{
 			Initialize ();
 		}
 
-		public FloatLabeledEditText (Context context, IAttributeSet attrs, int defStyle) : base(context, attrs, defStyle)
+		public FloatLabeledEditTextPlain (Context context, IAttributeSet attrs, int defStyle) : base(context, attrs, defStyle)
 		{
 			Initialize ();
 		}
